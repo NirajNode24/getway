@@ -1,5 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import viewsets
 
-def members(request):
-    return HttpResponse("Hello world!")
+from .serilizer import MembersSerialize
+from .models import Members
+
+class UserViewset(viewsets.ModelViewSet):
+    queryset = Members.objects.all()  # Correct the spelling of "queryset"
+    serializer_class = MembersSerialize
